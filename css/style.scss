@@ -5,11 +5,14 @@
 
 body{
     overflow: hidden;
+    font-family: sans-serif;
+    scroll-snap-type: y mandatory;
 }
 
-@mixin sectionSize(){
+@mixin sectionCfg(){
     width: 100vw;
     height: 100vh;
+    position: relative;
 }
 
 $colors : (
@@ -36,6 +39,7 @@ $colors : (
     color: white;
     flex: 1;
     text-align: center;
+    text-transform: uppercase;
     transition: .3s ease;
     cursor: pointer;
 
@@ -44,25 +48,78 @@ $colors : (
     }
 }
 
+@mixin txtContainerCfg{
+    width: 50%;
+    height: 50%;
+}
+
 ul{
     @include nav;
-    
+    z-index: 1;
+
     li{
         @include navItems;
     }
 }
 
+#indicatorContainer{
+    position: fixed;
+    top: 50%;
+    left: 5%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+
+    #indicator{    
+        width: 2px;
+        height: 100px;
+        border: 1px solid white;
+        background-color: white;
+        border-radius: 5px;    
+    
+        #indicatorBall{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            transition: top .6s;
+        }
+    }
+}
+
 #s1{
-    @include sectionSize;
+    @include sectionCfg;
     @include bgColor('a');
 }
 
 #s2{
-    @include sectionSize;
-    @include bgColor('b');
+    @include sectionCfg;
+    @include bgColor('a');
 }
 
 #s3{
-    @include sectionSize;
-    @include bgColor('c');
+    @include sectionCfg;
+    @include bgColor('a');
+}
+
+.textContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    h1{
+        margin: 10px;
+        color: white;
+        text-align: center;
+    }
+
+    p{
+        color: white;
+        text-align: center;
+    }
 }

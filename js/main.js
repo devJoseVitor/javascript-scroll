@@ -6,12 +6,17 @@ const sectionEl1 = document.querySelector('#s1');
 const sectionEl2 = document.querySelector('#s2');
 const sectionEl3 = document.querySelector('#s3');
 
+sectionEl1.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+});
+
 liEl1.onclick = () => {
     sectionEl1.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
     });
-    actualSection = 1;
+    setActualSection(1);
 }
 
 liEl2.onclick = () => {
@@ -19,7 +24,7 @@ liEl2.onclick = () => {
         behavior: 'smooth',
         block: 'start'
     });
-    actualSection = 2;
+    setActualSection(2);
 }
 
 liEl3.onclick = () => {
@@ -27,23 +32,23 @@ liEl3.onclick = () => {
         behavior: 'smooth',
         block: 'start'
     });
-    actualSection = 3;
+    setActualSection(3);
 }
 
 
 window.addEventListener('wheel', (event) => {
     if(event.deltaY < 0){
         if(actualSection === 3){
-            actualSection = 2;
+            setActualSection(2);
         }else if(actualSection === 2){
-            actualSection = 1;
+            setActualSection(1);
         }
         console.log(actualSection);
     }else if(event.deltaY > 0){
         if(actualSection === 1){
-            actualSection = 2;
+            setActualSection(2);
         }else if(actualSection === 2){
-            actualSection = 3;
+            setActualSection(3);
         }
         console.log(actualSection);
     }
@@ -65,3 +70,18 @@ window.addEventListener('wheel', (event) => {
         });
     }
 });
+
+function setActualSection(val){
+    if (val === 1){
+        actualSection = 1;
+        document.querySelector('#indicatorBall').style.top = 0;
+    }else if (val === 2){
+        actualSection = 2;
+        document.querySelector('#indicatorBall').style.top = '50%';
+    }else if (val === 3){
+        actualSection = 3;
+        document.querySelector('#indicatorBall').style.top = '100%';
+    }else{
+        console.warn('Valor de parametro inválido. O valor deve ser de 1 a 3.')
+    }
+}

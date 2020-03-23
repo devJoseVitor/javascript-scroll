@@ -5,6 +5,9 @@
 
 body {
   overflow: hidden;
+  font-family: sans-serif;
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
 }
 
 ul {
@@ -16,6 +19,7 @@ ul {
   display: flex;
   background-color: #262626;
   font-family: sans-serif;
+  z-index: 1;
 }
 
 ul li {
@@ -25,6 +29,7 @@ ul li {
       -ms-flex: 1;
           flex: 1;
   text-align: center;
+  text-transform: uppercase;
   -webkit-transition: .3s ease;
   transition: .3s ease;
   cursor: pointer;
@@ -34,21 +39,78 @@ ul li:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+#indicatorContainer {
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#indicatorContainer #indicator {
+  width: 2px;
+  height: 100px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 5px;
+}
+
+#indicatorContainer #indicator #indicatorBall {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  -webkit-transition: top .6s;
+  transition: top .6s;
+}
+
 #s1 {
   width: 100vw;
   height: 100vh;
+  position: relative;
   background-color: blue;
 }
 
 #s2 {
   width: 100vw;
   height: 100vh;
-  background-color: red;
+  position: relative;
+  background-color: blue;
 }
 
 #s3 {
   width: 100vw;
   height: 100vh;
-  background-color: yellow;
+  position: relative;
+  background-color: blue;
+}
+
+.textContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.textContainer h1 {
+  margin: 10px;
+  color: white;
+  text-align: center;
+}
+
+.textContainer p {
+  color: white;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */
