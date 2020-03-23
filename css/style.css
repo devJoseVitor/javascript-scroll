@@ -42,6 +42,8 @@ ul li:hover {
 #indicatorContainer {
   position: fixed;
   top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   left: 5%;
   z-index: 1;
   display: -webkit-box;
@@ -97,10 +99,13 @@ ul li:hover {
 
 .textContainer {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  opacity: 0;
+  -webkit-transition: top 1s ease, opacity 1s ease;
+  transition: top 1s ease, opacity 1s ease;
 }
 
 .textContainer h1 {
@@ -112,5 +117,11 @@ ul li:hover {
 .textContainer p {
   color: white;
   text-align: center;
+}
+
+.textContainerActive {
+  top: 50% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 /*# sourceMappingURL=style.css.map */

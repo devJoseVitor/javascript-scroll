@@ -65,6 +65,7 @@ ul{
 #indicatorContainer{
     position: fixed;
     top: 50%;
+    transform: translateY(-50%);
     left: 5%;
     z-index: 1;
     display: flex;
@@ -108,9 +109,11 @@ ul{
 
 .textContainer{
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: top 1s ease, opacity 1s ease;
 
     h1{
         margin: 10px;
@@ -122,4 +125,10 @@ ul{
         color: white;
         text-align: center;
     }
+}
+
+.textContainerActive{
+    top: 50% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
