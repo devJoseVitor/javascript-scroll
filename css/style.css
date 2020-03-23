@@ -2,4 +2,22 @@
   margin: 0;
   padding: 0;
 }
+
+#s1 {
+  width: 100vw;
+  height: 100vh;
+  background-color: blue;
+}
+
+#s2 {
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+}
+
+#s3 {
+  width: 100vw;
+  height: 100vh;
+  background-color: yellow;
+}
 /*# sourceMappingURL=style.css.map */

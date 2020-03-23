@@ -2,3 +2,34 @@
     margin: 0;
     padding: 0;
 }
+
+@mixin sectionSize(){
+    width: 100vw;
+    height: 100vh;
+}
+
+$colors : (
+    'a' : blue,
+    'b' : red,
+    'c' : yellow
+);
+
+@mixin bgColor($color){
+    background-color: map-get($colors, $color);
+}
+
+
+#s1{
+    @include sectionSize;
+    @include bgColor('a');
+}
+
+#s2{
+    @include sectionSize;
+    @include bgColor('b');
+}
+
+#s3{
+    @include sectionSize;
+    @include bgColor('c');
+}
