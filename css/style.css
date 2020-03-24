@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:800i&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -5,9 +6,7 @@
 
 body {
   overflow: hidden;
-  font-family: sans-serif;
-  -ms-scroll-snap-type: y mandatory;
-      scroll-snap-type: y mandatory;
+  font-family: 'Open Sans', sans-serif;
 }
 
 ul {
@@ -18,11 +17,11 @@ ul {
   display: -ms-flexbox;
   display: flex;
   background-color: #262626;
-  font-family: sans-serif;
+  background-color: transparent;
   z-index: 1;
 }
 
-ul li {
+ul #toS1, ul #toS2, ul #toS3 {
   padding: 1%;
   color: white;
   -webkit-box-flex: 1;
@@ -33,10 +32,49 @@ ul li {
   -webkit-transition: .3s ease;
   transition: .3s ease;
   cursor: pointer;
+  /* &:hover{
+        background-color: rgba(255, 255, 255, .1);
+    } */
+  -webkit-box-flex: .5;
+      -ms-flex: .5;
+          flex: .5;
 }
 
-ul li:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+ul #toS1::after, ul #toS2::after, ul #toS3::after {
+  content: '';
+  display: block;
+  width: 0;
+  padding-top: 1%;
+  border-bottom: 2px solid white;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+
+ul #toS1:hover::after, ul #toS2:hover::after, ul #toS3:hover::after {
+  width: 100%;
+}
+
+ul #logo {
+  padding: 1%;
+  color: white;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  cursor: pointer;
+  /* &:hover{
+        background-color: rgba(255, 255, 255, .1);
+    } */
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  pointer-events: none;
+}
+
+ul .menuHover::after {
+  width: 100% !important;
 }
 
 #indicatorContainer {
@@ -70,7 +108,8 @@ ul li:hover {
           transform: translate(-50%, -50%);
   width: 15px;
   height: 15px;
-  background-color: white;
+  background-color: #934de2;
+  border: 5px solid #262626;
   border-radius: 50%;
   -webkit-transition: top .6s;
   transition: top .6s;
@@ -80,21 +119,21 @@ ul li:hover {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-color: blue;
+  background-color: #262626;
 }
 
 #s2 {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-color: blue;
+  background-color: #262626;
 }
 
 #s3 {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-color: blue;
+  background-color: #262626;
 }
 
 .textContainer {
@@ -112,16 +151,84 @@ ul li:hover {
   margin: 10px;
   color: white;
   text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 1.7em;
+  pointer-events: none;
 }
 
 .textContainer p {
   color: white;
   text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  pointer-events: none;
+}
+
+.textContainer p #emailContato {
+  text-decoration: none;
+  font-weight: bolder;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  pointer-events: visible;
+  color: white;
+}
+
+.textContainer p #emailContato:hover {
+  color: #934de2;
 }
 
 .textContainerActive {
   top: 50% !important;
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+footer {
+  position: fixed;
+  bottom: 2%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 2;
+  color: white;
+}
+
+footer a {
+  text-decoration: none;
+  font-weight: bolder;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  pointer-events: visible;
+  color: white;
+}
+
+footer a:hover {
+  color: #934de2;
+}
+
+@media (max-width: 375px) {
+  ul {
+    margin-top: 20px;
+  }
+  ul li {
+    font-size: .63em;
+  }
+  ul #toS1, ul #toS2, ul #toS3 {
+    -webkit-box-flex: .7;
+        -ms-flex: .7;
+            flex: .7;
+  }
+  .textContainer h1 {
+    font-size: 1.2em;
+  }
+  .textContainer p {
+    font-size: .7em;
+  }
+  footer {
+    font-size: .63em;
+  }
 }
 /*# sourceMappingURL=style.css.map */

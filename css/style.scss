@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:800i&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -5,21 +7,18 @@
 
 body{
     overflow: hidden;
-    font-family: sans-serif;
-    scroll-snap-type: y mandatory;
+    font-family: 'Open Sans', sans-serif;
 }
+
+$colors : (
+    'bg' : #262626
+);
 
 @mixin sectionCfg(){
     width: 100vw;
     height: 100vh;
     position: relative;
 }
-
-$colors : (
-    'a' : blue,
-    'b' : red,
-    'c' : yellow
-);
 
 @mixin bgColor($color){
     background-color: map-get($colors, $color);
@@ -31,7 +30,6 @@ $colors : (
     list-style: none;
     display: flex;
     background-color: #262626;
-    font-family: sans-serif;
 }
 
 @mixin navItems{
@@ -43,9 +41,9 @@ $colors : (
     transition: .3s ease;
     cursor: pointer;
 
-    &:hover{
+    /* &:hover{
         background-color: rgba(255, 255, 255, .1);
-    }
+    } */
 }
 
 @mixin txtContainerCfg{
@@ -53,12 +51,60 @@ $colors : (
     height: 50%;
 }
 
+@mixin footerCfg {
+    position: fixed;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+@mixin linkCfg{
+    text-decoration: none;
+    font-weight: bolder;
+    transition: .3s ease;
+    pointer-events: visible;
+
+    &:hover{
+        color: rgba($color: #934de2, $alpha: 1.0);
+    }
+    
+}
+
 ul{
     @include nav;
+    background-color: transparent;
     z-index: 1;
 
-    li{
+    #toS1, #toS2, #toS3{
         @include navItems;
+        flex: .5;
+
+        &::after{
+            content: '';
+            display: block;
+            width: 0;
+            padding-top: 1%;
+            border-bottom: 2px solid white;
+            transition: .5s ease;
+        }
+
+        &:hover::after{
+            width: 100%;
+        }
+    }
+
+    #logo{
+        @include navItems;
+        align-self: flex-start;
+        pointer-events: none;
+    }
+
+    .menuHover{
+        &::after{
+            width: 100% !important;
+        }
     }
 }
 
@@ -85,7 +131,8 @@ ul{
             transform: translate(-50%, -50%);
             width: 15px;
             height: 15px;
-            background-color: white;
+            background-color: rgba($color: #934de2, $alpha: 1.0);
+            border: 5px solid #262626;
             border-radius: 50%;
             transition: top .6s;
         }
@@ -94,17 +141,17 @@ ul{
 
 #s1{
     @include sectionCfg;
-    @include bgColor('a');
+    @include bgColor('bg');
 }
 
 #s2{
     @include sectionCfg;
-    @include bgColor('a');
+    @include bgColor('bg');
 }
 
 #s3{
     @include sectionCfg;
-    @include bgColor('a');
+    @include bgColor('bg');
 }
 
 .textContainer{
@@ -119,11 +166,24 @@ ul{
         margin: 10px;
         color: white;
         text-align: center;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-style: italic;
+        font-size: 1.7em;
+        pointer-events: none;
     }
 
     p{
         color: white;
         text-align: center;
+        font-weight: bold;
+        font-size: 1.2em;
+        pointer-events: none;
+
+        #emailContato{
+            @include linkCfg;
+            color: white;
+        }
     }
 }
 
@@ -131,4 +191,41 @@ ul{
     top: 50% !important;
     opacity: 1 !important;
     visibility: visible !important;
+}
+
+footer{
+    @include footerCfg;
+    color: white;
+
+    a{
+        @include linkCfg;
+        color: white;
+    }
+}
+
+@media (max-width: 375px){
+    ul{
+        margin-top: 20px;
+        li{
+            font-size: .63em;
+        }
+
+        #toS1, #toS2, #toS3{
+            flex: .7;
+        }
+    }
+
+    .textContainer{
+        h1{
+            font-size: 1.2em;
+        }
+
+        p{
+            font-size: .7em;
+        }
+    }
+
+    footer{
+        font-size: .63em;
+    }
 }

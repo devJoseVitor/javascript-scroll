@@ -5,9 +5,6 @@ const liEl3 = document.querySelector('#toS3');
 const sectionEl1 = document.querySelector('#s1');
 const sectionEl2 = document.querySelector('#s2');
 const sectionEl3 = document.querySelector('#s3');
-// console.log(document.querySelector('.textContainer').classList);
-// document.querySelector('.textContainer').classList.remove('textContainerActive');
-// console.log(document.querySelector('.textContainer').classList);
 
 sectionEl1.scrollIntoView({
     behavior: 'smooth',
@@ -93,25 +90,34 @@ function setActualSection(val){
         document.querySelector('#indicatorBall').style.top = 0;
         document.querySelector('#s2 .textContainer').classList.remove('textContainerActive');
         document.querySelector('#s3 .textContainer').classList.remove('textContainerActive');
+        document.querySelector('#toS1').classList.add('menuHover');
+        document.querySelector('#toS2').classList.remove('menuHover');
+        document.querySelector('#toS3').classList.remove('menuHover');
         setTimeout(() => {
             document.querySelector('#s1 .textContainer').classList.add('textContainerActive');    
-        }, 150);
+        }, 450);
     }else if (val === 2){
         actualSection = 2;
         document.querySelector('#indicatorBall').style.top = '50%';
         document.querySelector('#s1 .textContainer').classList.remove('textContainerActive');
         document.querySelector('#s3 .textContainer').classList.remove('textContainerActive');
+        document.querySelector('#toS1').classList.remove('menuHover');
+        document.querySelector('#toS2').classList.add('menuHover');
+        document.querySelector('#toS3').classList.remove('menuHover');
         setTimeout(() => {
             document.querySelector('#s2 .textContainer').classList.add('textContainerActive');    
-        }, 150);
+        }, 450);
     }else if (val === 3){
         actualSection = 3;
         document.querySelector('#indicatorBall').style.top = '100%';
         document.querySelector('#s1 .textContainer').classList.remove('textContainerActive');
         document.querySelector('#s2 .textContainer').classList.remove('textContainerActive');
+        document.querySelector('#toS1').classList.remove('menuHover');
+        document.querySelector('#toS2').classList.remove('menuHover');
+        document.querySelector('#toS3').classList.add('menuHover');
         setTimeout(() => {
             document.querySelector('#s3 .textContainer').classList.add('textContainerActive');    
-        }, 150);
+        }, 450);
     }else{
         console.warn('Valor de parametro inválido. O valor deve ser de 1 a 3.')
     }
